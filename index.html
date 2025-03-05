@@ -25,7 +25,6 @@
                 margin: 0;
                 padding: 0;
             }
-            /* Navbar Styles */
             .navbar {
                 display: flex;
                 justify-content: space-between;
@@ -52,7 +51,6 @@
             .navbar-links a:hover {
                 color: #9f9fdd;
             }
-            /* Marquee Styles */
             .marquee {
                 background-color: rgba(255, 255, 255, 0.2);
                 padding: 10px 0;
@@ -194,7 +192,6 @@
         </style>
     </head>
     <body>
-        <!-- Navbar -->
         <nav class="navbar">
             <div class="navbar-brand">Product Catalog</div>
             <div class="navbar-links">
@@ -203,7 +200,6 @@
             </div>
         </nav>
 
-        <!-- Marquee -->
         <div class="marquee">
             <div class="marquee-content">
                 🎉 Special Offer: Free Shipping on Orders Over ₹1000 | 20% Off on First Purchase | Limited Time Deals! 🛍️
@@ -214,7 +210,6 @@
             <p style="background-color: rgba(0, 0, 0, 0.3); font-size:50px; font-family: 'Luckiest Guy';color:rgb(255, 255, 255); text-shadow: 0px 4px rgb(17, 18, 56);">Items to Buy</p>
             
             <div class="container" id="product-container">
-                <!-- Products will be dynamically added here -->
             </div>
             
             <p id="shop" style="background-color: rgba(0, 0, 0, 0.3); font-size:50px; font-family: 'Luckiest Guy';color:rgb(255, 255, 255); text-shadow: 0px 4px rgb(17, 18, 56);">Shopping Cart</p>
@@ -229,7 +224,6 @@
                     <p>ACTION</p>
                 </div>
                 <div id="shop-cart-items">
-                    <!-- Cart items will be dynamically added here -->
                 </div>
                 <div class="things">
                     <img style="width: 70px;" src="">
@@ -242,7 +236,6 @@
         </div>
 
         <script>
-            // Product Class
             class Product {
                 constructor(id, name, price, image, description) {
                     this.productDetails = {
@@ -254,7 +247,6 @@
                     };
                 }
 
-                // Getter methods for product details
                 get id() { return this.productDetails.id; }
                 get name() { return this.productDetails.name; }
                 get price() { return this.productDetails.price; }
@@ -262,7 +254,6 @@
                 get description() { return this.productDetails.description; }
             }
 
-            // Cart Class
             class Cart {
                 constructor() {
                     this.items = [];
@@ -310,7 +301,6 @@
                         const itemTotal = item.price * item.quantity;
                         totalAmount += itemTotal;
 
-                        // Format the timestamp to be more readable
                         const formattedTimestamp = item.addedAt.toLocaleString('en-IN', {
                             year: 'numeric',
                             month: '2-digit',
@@ -341,7 +331,6 @@
                 }
             }
 
-            // Product catalog
             const products = [
                 new Product(1, 'Table Lamp', 240, 'https://m.media-amazon.com/images/I/71jIfDWFmEL._AC_UF1000,1000_QL80_.jpg'),
                 new Product(2, 'Desk Clock', 180, 'https://images-cdn.ubuy.co.in/65c5ac7c9e8e032ae9699839-ayrely-4-5-analog-alarm-clock-small.jpg'),
@@ -351,10 +340,8 @@
                 new Product(6, 'Candle Set', 75, 'https://icmedianew.gumlet.io/pub/media/catalog/product/i/n/india-circus-by-krsnaa-mehta-chevron-palms-conical-candle-votive-set-of-2-39112604sd00293-2.jpg')
             ];
 
-            // Initialize cart
             const cart = new Cart();
 
-            // Render products
             function renderProducts() {
                 const container = document.getElementById('product-container');
                 container.innerHTML = '';
@@ -374,7 +361,6 @@
                 });
             }
 
-            // Initial render
             renderProducts();
         </script>
     </body>
