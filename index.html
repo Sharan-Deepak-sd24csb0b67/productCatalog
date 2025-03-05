@@ -23,6 +23,52 @@
                 background-attachment: fixed;
                 background-position: center;
                 margin: 0;
+                padding: 0;
+            }
+            /* Navbar Styles */
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.7);
+                padding: 15px 30px;
+                color: white;
+            }
+            .navbar-brand {
+                font-family: 'Luckiest Guy';
+                font-size: 40px;
+                text-shadow: 0px 3px rgb(17, 18, 56);
+            }
+            .navbar-links {
+                display: flex;
+                gap: 20px;
+            }
+            .navbar-links a {
+                color: white;
+                text-decoration: none;
+                font-size: 25px;
+                transition: color 0.3s;
+            }
+            .navbar-links a:hover {
+                color: #9f9fdd;
+            }
+            /* Marquee Styles */
+            .marquee {
+                background-color: rgba(255, 255, 255, 0.2);
+                padding: 10px 0;
+                white-space: nowrap;
+                overflow: hidden;
+                box-sizing: border-box;
+            }
+            .marquee-content {
+                display: inline-block;
+                animation: marquee 20s linear infinite;
+            }
+            @keyframes marquee {
+                0% { transform: translateX(100%); }
+                100% { transform: translateX(-100%); }
+            }
+            .main-content {
                 padding: 20px;
             }
             .container {
@@ -148,32 +194,50 @@
         </style>
     </head>
     <body>
-        <p style="background-color: rgba(0, 0, 0, 0.3); font-size:50px; font-family: 'Luckiest Guy';color:rgb(255, 255, 255); text-shadow: 0px 4px rgb(17, 18, 56);">Items to Buy</p>
-        
-        <div class="container" id="product-container">
-            <!-- Products will be dynamically added here -->
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="navbar-brand">Product Catalog</div>
+            <div class="navbar-links">
+                <a href="#product-container">Products</a>
+                <a href="#shop-cart-items">Cart</a>
+            </div>
+        </nav>
+
+        <!-- Marquee -->
+        <div class="marquee">
+            <div class="marquee-content">
+                🎉 Special Offer: Free Shipping on Orders Over ₹1000 | 20% Off on First Purchase | Limited Time Deals! 🛍️
+            </div>
         </div>
-        
-        <p id="shop" style="background-color: rgba(0, 0, 0, 0.3); font-size:50px; font-family: 'Luckiest Guy';color:rgb(255, 255, 255); text-shadow: 0px 4px rgb(17, 18, 56);">Shopping Cart</p>
-        
-        <div class="container2">
-            <div class="titles">
-                <p>ITEM</p>
-                <p>PRICE</p>
-                <p>QUANTITY</p>
-                <p>AMOUNT</p>
-                <p>DATE & TIME</p>
-                <p>ACTION</p>
+
+        <div class="main-content">
+            <p style="background-color: rgba(0, 0, 0, 0.3); font-size:50px; font-family: 'Luckiest Guy';color:rgb(255, 255, 255); text-shadow: 0px 4px rgb(17, 18, 56);">Items to Buy</p>
+            
+            <div class="container" id="product-container">
+                <!-- Products will be dynamically added here -->
             </div>
-            <div id="shop-cart-items">
-                <!-- Cart items will be dynamically added here -->
-            </div>
-            <div class="things">
-                <img style="width: 70px;" src="">
-                <p></p>
-                <p></p>
-                <p></p>
-                <p id="total-amount">Total Amount: ₹0</p>
+            
+            <p id="shop" style="background-color: rgba(0, 0, 0, 0.3); font-size:50px; font-family: 'Luckiest Guy';color:rgb(255, 255, 255); text-shadow: 0px 4px rgb(17, 18, 56);">Shopping Cart</p>
+            
+            <div class="container2">
+                <div class="titles">
+                    <p>ITEM</p>
+                    <p>PRICE</p>
+                    <p>QUANTITY</p>
+                    <p>AMOUNT</p>
+                    <p>DATE & TIME</p>
+                    <p>ACTION</p>
+                </div>
+                <div id="shop-cart-items">
+                    <!-- Cart items will be dynamically added here -->
+                </div>
+                <div class="things">
+                    <img style="width: 70px;" src="">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p id="total-amount">Total Amount: ₹0</p>
+                </div>
             </div>
         </div>
 
