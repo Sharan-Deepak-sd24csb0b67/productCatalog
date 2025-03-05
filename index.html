@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shopping Cart</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cinzel:wght@400..900&family=Jersey+15&family=Kumbh+Sans:wght@100..900&family=Luckiest+Guy&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Saira:ital,wght@0,100..900;1,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <style>
+            * {
+                text-shadow: rgba(12, 12, 12, 0.685) 1px 2px;
+                text-align: center;
+                font-family: "Jersey 15";
+                font-size: 30px;
+                box-sizing: border-box;
+            }
+            body {
+                background-color: rgb(0, 57, 163);
+                color: white;
+                background-image: linear-gradient(rgba(10, 10, 30, 0), rgba(10, 10, 30, 1)), url(https://images.travelandleisureasia.com/wp-content/uploads/sites/2/2022/08/04161939/Luxury-shopping-in-India-1-1600x900.jpg);
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center;
+                margin: 0;
+                padding: 20px;
+            }
+            .container {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                grid-gap: 20px;
+            }
+            .card {
+                border-radius: 5px;
+                border: 2px solid rgba(255, 255, 255, 0.5);
+                height: 310px;
+                display: flex;
+                flex-direction: column;
+                width: 170px;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                background-color: rgba(159, 159, 221, 0.479);
+                transition: all 0.3s;
+                position: relative;
+            }
+            .card:hover {
+                transform: scale(1.1);
+                box-shadow: 0 0 15px rgba(255,255,255,0.5);
+            }
+            .img-preview {
+                width: 150px;
+                height: 160px;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+            .Add {
+                background-color: red;
+                border-radius: 10px;
+                width: 80%;
+                text-align: center;
+                transition: all 0.3s;
+                cursor: pointer;
+                padding: 5px;
+            }
+            .Add:hover {
+                background-color: white;
+                color: red;
+                transform: scale(1.05);
+            }
+            .Add:active {
+                color: white;
+                background-color: black;
+            }
+            .titles {
+                display: flex;
+                flex-direction: row;
+                gap: 2rem;
+                justify-content: stretch;
+                padding-left: 4rem;
+            }
+            .things {
+                background-color: rgba(245, 222, 179, 0.315);
+                display: flex;
+                flex-direction: row;
+                gap: 2rem;
+                justify-content: stretch;
+                align-items: center;   
+                transition: all 0.1s; 
+            }
+         
+            .titles p {
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                min-width: 120px;
+            }
+            .container2 {
+                display: flex;
+                flex-direction: column;
+                background-color: rgba(0, 0, 0, 0.37);
+                gap: 0.1rem;
+                margin-top: 20px;
+            }
+            #shop-cart-items {
+                display: flex;
+                flex-direction: column;
+            }
+            .remove-item {
+                background-color: #ff4444;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 5px 10px;
+                cursor: pointer;
+                margin-left: 10px;
+                transition: all 0.3s;
+            }
+            .remove-item:hover {
+                background-color: #ff1111;
+                transform: scale(1.05);
+            }
+            .quantity-control {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            .quantity-btn {
+                background-color: rgba(255,255,255,0.2);
+                border: none;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+            .quantity-btn:hover {
+                background-color: rgba(255,255,255,0.4);
+            }
+            .timestamp-column {
+                font-size: 20px;
+            }
+            .things p {
+                min-width: 120px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <p style="background-color: rgba(0, 0, 0, 0.3); font-size:50px; font-family: 'Luckiest Guy';color:rgb(255, 255, 255); text-shadow: 0px 4px rgb(17, 18, 56);">Items to Buy</p>
+        
+        <div class="container" id="product-container">
+            <!-- Products will be dynamically added here -->
+        </div>
+        
+        <p id="shop" style="background-color: rgba(0, 0, 0, 0.3); font-size:50px; font-family: 'Luckiest Guy';color:rgb(255, 255, 255); text-shadow: 0px 4px rgb(17, 18, 56);">Shopping Cart</p>
+        
+        <div class="container2">
+            <div class="titles">
+                <p>ITEM</p>
+                <p>PRICE</p>
+                <p>QUANTITY</p>
+                <p>AMOUNT</p>
+                <p>DATE & TIME</p>
+                <p>ACTION</p>
+            </div>
+            <div id="shop-cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="things">
+                <img style="width: 70px;" src="">
+                <p></p>
+                <p></p>
+                <p></p>
+                <p id="total-amount">Total Amount: ₹0</p>
+            </div>
+        </div>
+
+        <script>
+            // Product Class
+            class Product {
+                constructor(id, name, price, image, description) {
+                    this.productDetails = {
+                        id: id,
+                        name: name,
+                        price: price,
+                        image: image,
+                        description: description
+                    };
+                }
+
+                // Getter methods for product details
+                get id() { return this.productDetails.id; }
+                get name() { return this.productDetails.name; }
+                get price() { return this.productDetails.price; }
+                get image() { return this.productDetails.image; }
+                get description() { return this.productDetails.description; }
+            }
+
+            // Cart Class
+            class Cart {
+                constructor() {
+                    this.items = [];
+                    this.cartContainer = document.getElementById('shop-cart-items');
+                    this.totalAmountElement = document.getElementById('total-amount');
+                    this.dateCreated = new Date();
+                }
+
+                addItem(product) {
+                    const existingItem = this.items.find(item => item.id === product.id);
+
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        this.items.push({
+                            ...product.productDetails,
+                            quantity: 1,
+                            addedAt: new Date() // Store the exact time item was added
+                        });
+                    }
+
+                    this.renderCart();
+                }
+
+                removeItem(productId) {
+                    this.items = this.items.filter(item => item.id !== productId);
+                    this.renderCart();
+                }
+
+                updateQuantity(productId, change) {
+                    const cartItem = this.items.find(item => item.id === productId);
+                    if (cartItem) {
+                        cartItem.quantity = Math.max(1, cartItem.quantity + change);
+                        this.renderCart();
+                    }
+                }
+
+                renderCart() {
+                    this.cartContainer.innerHTML = '';
+                    let totalAmount = 0;
+
+                    this.items.forEach(item => {
+                        const cartItem = document.createElement('div');
+                        cartItem.className = 'things';
+                        const itemTotal = item.price * item.quantity;
+                        totalAmount += itemTotal;
+
+                        // Format the timestamp to be more readable
+                        const formattedTimestamp = item.addedAt.toLocaleString('en-IN', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit',
+                            hour12: true
+                        });
+
+                        cartItem.innerHTML = `
+                            <img style="width: 70px;" src="${item.image}" alt="${item.name}">
+                            <p>${item.name}</p>
+                            <p>₹${item.price}</p>
+                            <p>
+                                <button class="quantity-btn" onclick="cart.updateQuantity(${item.id}, -1)">-</button>
+                                ${item.quantity}
+                                <button class="quantity-btn" onclick="cart.updateQuantity(${item.id}, 1)">+</button>
+                            </p>
+                            <p>₹${itemTotal}</p>
+                            <p class="timestamp-column">${formattedTimestamp}</p>
+                            <button class="remove-item" onclick="cart.removeItem(${item.id})">Remove</button>
+                        `;
+                        this.cartContainer.appendChild(cartItem);
+                    });
+
+                    this.totalAmountElement.textContent = `Total Amount: ₹${totalAmount}`;
+                }
+            }
+
+            // Product catalog
+            const products = [
+                new Product(1, 'Table Lamp', 240, 'https://m.media-amazon.com/images/I/71jIfDWFmEL._AC_UF1000,1000_QL80_.jpg'),
+                new Product(2, 'Desk Clock', 180, 'https://images-cdn.ubuy.co.in/65c5ac7c9e8e032ae9699839-ayrely-4-5-analog-alarm-clock-small.jpg'),
+                new Product(3, 'Plant Pot', 120, 'https://www.homesake.in/cdn/shop/files/IH0E257_theme.jpg?v=1704541608'),
+                new Product(4, 'Throw Pillow', 90, 'https://thesleepcompany.in/cdn/shop/files/Adjustable_Plush_Pillow_01_73819371-924c-48af-abe9-38a21dc0d586.jpg?v=1740335354'),
+                new Product(5, 'Wall Art', 350, 'https://hansart.in/cdn/shop/products/1_da924bc2-9c82-47e1-a287-1794380b1ba3.jpg?v=1659280986'),
+                new Product(6, 'Candle Set', 75, 'https://icmedianew.gumlet.io/pub/media/catalog/product/i/n/india-circus-by-krsnaa-mehta-chevron-palms-conical-candle-votive-set-of-2-39112604sd00293-2.jpg')
+            ];
+
+            // Initialize cart
+            const cart = new Cart();
+
+            // Render products
+            function renderProducts() {
+                const container = document.getElementById('product-container');
+                container.innerHTML = '';
+                
+                products.forEach(product => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <img class="img-preview" src="${product.image}" alt="${product.name}">
+                        <div class="name">${product.name}</div>
+                        <div class="price">₹${product.price}</div>
+                        <div class="Add" onclick="cart.addItem(products[${product.id - 1}])">
+                            <p style="display: inline;">Add To Cart</p>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            // Initial render
+            renderProducts();
+        </script>
+    </body>
+</html>
